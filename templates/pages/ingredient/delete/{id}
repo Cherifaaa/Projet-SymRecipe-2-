@@ -1,0 +1,8 @@
+#[Route('/ingredient/delete/{id}', name: 'ingredient_delete')]
+public function delete(Ingredient $ingredient, EntityManagerInterface $em): Response
+{
+    $em->remove($ingredient);
+    $em->flush();
+    $this->addFlash('success', 'Ingrédient supprimé');
+    return $this->redirectToRoute('app_ingredient');
+}
